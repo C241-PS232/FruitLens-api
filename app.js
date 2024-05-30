@@ -6,13 +6,13 @@ const config = require('./config/config');
 
 const app = express();
 
-// Middleware
+// Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
-// Routes
+// Use the user routes
 app.use('/api/users', userRoutes);
 
-// Start server
+// Start the server
 const port = config.port;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

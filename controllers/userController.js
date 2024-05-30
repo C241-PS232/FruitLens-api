@@ -1,5 +1,7 @@
 const db = require('../firebase/firebase');
 const { v4: uuidv4 } = require('uuid');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 exports.getAllUsers = async (req, res) => {
     try {
@@ -14,9 +16,46 @@ exports.getAllUsers = async (req, res) => {
 exports.createUser = async (req, res) => {
     try {
         const id = uuidv4();
-        await db.collection('users').doc(id).set(req.body);
-        res.status(201).json({ id, ...req.body });
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const user = { ...req.body, password: hashedPassword };
+        await db.collection('users').doc(id).set(user);
+        res.status(201).json({ id, ...user });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
+};
+
+exports.loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        console.log("Login attempt:", { email, password });
+        
+        const snapshot = await db.collection('users').where('email', '==', email).get();
+        if (snapshot.empty) {
+            console.log("No user found with this email.");
+            return res.status(400).json({ email, logged: false, message: 'Invalid email or password' });
+        }
+        
+        const userDoc = snapshot.docs[0];
+        const user = userDoc.data();
+        console.log("User found:", user);
+        
+        const validPassword = await bcrypt.compare(password, user.password);
+        console.log("Password valid:", validPassword);
+        
+        if (!validPassword) {
+            console.log("Password mismatch.");
+            return res.status(400).json({ email, logged: false, message: 'Invalid email or password' });
+        }
+        
+        const token = jwt.sign({ id: userDoc.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        res.status(200).json({ email: user.email, logged: true, token });
+    } catch (error) {
+        console.log("Error during login:", error);
+        res.status(500).json({ email: req.body.email, logged: false, message: error.message });
+    }
+};
+
+exports.logoutUser = (req, res) => {
+    res.status(200).json({ message: 'User logged out' });
 };
