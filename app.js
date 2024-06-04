@@ -2,17 +2,26 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes');
-const recognitionRoutes = require('./routes/recognitionRoutes');
+const fruitRoutes = require('./routes/fruitRoutes');
 const config = require('./config/config');
+const path = require('path');
 
 const app = express();
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
+// Middleware to parse x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Static file serving for uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // Use the user routes
 app.use('/api/users', userRoutes);
-app.use('/api/recognition', recognitionRoutes); // Add this line
+
+// Use the fruit routes
+app.use('/api/fruits', fruitRoutes);
 
 // Start the server
 const port = config.port || 3000;
