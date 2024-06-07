@@ -1,48 +1,43 @@
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress TensorFlow logging
-
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 import numpy as np
 from PIL import Image
 import sys
 import json
-import logging
+import os
 
 # Suppress TensorFlow logging
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 tf.get_logger().setLevel('ERROR')
 
-# Get the directory of the current script
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
 # Load the model
-model_path = os.path.join(script_dir, '../models/model.h5')
+model_path = os.path.join(os.path.dirname(__file__), '../models/model.h5')
 model = load_model(model_path)
 
 # Define class names
 class_names = [
-    'Apple', 'Banana', 'Carambola', 'Guava', 'Kiwi', 'Mango', 'Orange', 'Peach', 
-    'Pear', 'Persimmon', 'Pitaya', 'Plum', 'Pomegranate', 'Tomatoes', 'Muskmelon'
+    'apple', 'apricot', 'avocado', 'banana', 'blackberry', 'blueberry', 'boysenberry', 'cantaloupe', 'cherry', 'clementine', 'coconut', 'cranberry', 'cucumber', 'currant', 'date', 'elderberry'
 ]
 
-# Define a function to preprocess the image
+# Preprocess the image to match the model input shape
 def preprocess_image(image_path):
-    img = Image.open(image_path).convert('RGB').resize((150, 150))  # Convert to RGB and resize to the input size of the model
+    img = Image.open(image_path).convert('RGB').resize((150, 150))  # Resize to 150x150 to match model training
     img = np.array(img) / 255.0  # Normalize the image
     img = np.expand_dims(img, axis=0)  # Add batch dimension
     return img
 
-# Define a function to predict the class of the fruit
+# Predict the class of the fruit
 def classify_fruit(image_path):
     img = preprocess_image(image_path)
     prediction = model.predict(img)
     class_idx = int(np.argmax(prediction, axis=1)[0])  # Convert to int
     class_name = class_names[class_idx]  # Get the class name
-    return class_idx, class_name
+    confidence = round(100 * np.max(tf.nn.softmax(prediction)[0]), 2)  # Calculate confidence
+    return class_idx, class_name, confidence
 
 # Main function to handle command line arguments
 if __name__ == "__main__":
     image_path = sys.argv[1]
-    class_idx, class_name = classify_fruit(image_path)
+    class_idx, class_name, confidence = classify_fruit(image_path)
     # Print only the JSON result
-    print(json.dumps({"class_id": class_idx, "class_name": class_name}))
+    print(json.dumps({"ClassID": class_idx, "ClassName": class_name, "Confidence": confidence}))
