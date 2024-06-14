@@ -1,9 +1,9 @@
+// app.js
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes');
 const fruitRoutes = require('./routes/fruitRoutes');
-const config = require('./config/config');
 const path = require('path');
 
 const app = express();

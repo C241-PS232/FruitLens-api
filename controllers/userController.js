@@ -1,10 +1,12 @@
-const db = require('../firebase/firebase');
+// userController.js
+const initializeFirebase = require('../firebase/firebase');
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 exports.getAllUsers = async (req, res) => {
     try {
+        const db = await initializeFirebase();
         const snapshot = await db.collection('users').get();
         const users = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         res.status(200).json(users);
@@ -15,6 +17,7 @@ exports.getAllUsers = async (req, res) => {
 
 exports.createUser = async (req, res) => {
     try {
+        const db = await initializeFirebase();
         const id = uuidv4();
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const user = { ...req.body, password: hashedPassword };
@@ -27,6 +30,7 @@ exports.createUser = async (req, res) => {
 
 exports.loginUser = async (req, res) => {
     try {
+        const db = await initializeFirebase();
         const { email, password } = req.body;
         const snapshot = await db.collection('users').where('email', '==', email).get();
         if (snapshot.empty) {
@@ -44,7 +48,6 @@ exports.loginUser = async (req, res) => {
         res.status(500).json({ email: req.body.email, logged: false, message: error.message });
     }
 };
-
 
 exports.logoutUser = (req, res) => {
     res.status(200).json({ message: 'User logged out' });
