@@ -1,69 +1,57 @@
 const express = require('express');
+const router = express.Router();
 const multer = require('multer');
-const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
-const authenticateToken = require('../middlewares/authMiddleware');
+const tf = require('@tensorflow/tfjs-node');
 
-const router = express.Router();
+// Load the model
+let model;
+const loadModel = async () => {
+    model = await tf.loadLayersModel('file://models/model.json');
+    console.log('Model loaded successfully');
+};
+loadModel();
 
-// Configure multer for file uploads
+// Set up multer for file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads/');
     },
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`);
+        cb(null, `${Date.now()}_${file.originalname}`);
     }
 });
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
-// Route to handle fruit image upload and classification (protected)
-router.post('/classify', authenticateToken, upload.single('image'), (req, res) => {
+// Helper function to process and classify the image
+const classifyImage = async (filePath) => {
+    const imageBuffer = fs.readFileSync(filePath);
+    const imageTensor = tf.node.decodeImage(imageBuffer);
+    const resizedImage = tf.image.resizeBilinear(imageTensor, [224, 224]);
+    const normalizedImage = resizedImage.div(255.0).expandDims(0);
+
+    const predictions = await model.predict(normalizedImage).data();
+    const labels = ['Apple', 'Avocado', 'Banana', 'Blueberry', 'Cherry', 'Cucumber', 'Date', 'Grape',
+        'Kiwi', 'Longan', 'Lychee', 'Mango', 'Mangosteen', 'Orange', 'Papaya', 'Pineapple',
+        'Rambutan', 'Salak', 'Watermelon', 'Coconut', 'Unknown']; // Update with your labels
+    const maxIndex = predictions.indexOf(Math.max(...predictions));
+    return labels[maxIndex];
+};
+
+// Route to upload and classify image
+router.post('/classify', upload.single('image'), async (req, res) => {
     if (!req.file) {
-        return res.status(400).json({ error: 'No file uploaded' });
+        return res.status(400).send('No file uploaded');
     }
 
-    const filePath = path.join(__dirname, '../uploads', req.file.filename);
-    const pythonScriptPath = path.join(__dirname, '../scripts/classify_fruit.py');
-
-    // Execute the Python script
-    exec(`python ${pythonScriptPath} ${filePath}`, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error executing Python script: ${error}`);
-            return res.status(500).json({ error: 'Internal server error' });
-        }
-
-        // Handle potential warnings or other non-JSON outputs in stderr
-        if (stderr) {
-            console.error(`Python script stderr: ${stderr}`);
-        }
-
-        try {
-            // Extract the JSON part from stdout
-            const jsonOutput = stdout.split('\n').filter(line => {
-                try {
-                    JSON.parse(line);
-                    return true;
-                } catch (e) {
-                    return false;
-                }
-            })[0];
-            const result = JSON.parse(jsonOutput);
-            res.status(200).json(result);
-        } catch (parseError) {
-            console.error(`Error parsing JSON: ${parseError}`);
-            console.error(`Python script output: ${stdout}`);
-            res.status(500).json({ error: 'Error parsing response from Python script' });
-        } finally {
-            // Delete the uploaded file after processing
-            fs.unlink(filePath, (err) => {
-                if (err) {
-                    console.error(`Error deleting file: ${err}`);
-                }
-            });
-        }
-    });
+    try {
+        const classificationResult = await classifyImage(req.file.path);
+        res.json({ result: classificationResult });
+    } catch (error) {
+        console.error('Error classifying image:', error);
+        res.status(500).send('Error classifying image');
+    }
 });
 
 module.exports = router;
