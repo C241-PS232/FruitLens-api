@@ -5,9 +5,9 @@ const tf = require('@tensorflow/tfjs-node');
 const fs = require('fs');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
-const initializeFirebase = require('../firebase/firebase');
-const admin = require('firebase-admin');
+const { initializeFirebase, admin } = require('../firebase/firebase');
 const authenticateToken = require('../middlewares/authMiddleware');
+const { getFruitInfo } = require('../controllers/fruitController');
 
 const router = express.Router();
 const storage = new Storage();
@@ -61,7 +61,7 @@ const classifyImage = async (filePath) => {
         const predictions = await model.predict(normalizedImage).data();
         const labels = ['Apple', 'Avocado', 'Banana', 'Blueberry', 'Cherry', 'Cucumber', 'Date', 'Grape',
             'Kiwi', 'Longan', 'Lychee', 'Mango', 'Mangosteen', 'Orange', 'Papaya', 'Pineapple',
-            'Rambutan', 'Salak', 'Watermelon', 'Coconut', 'Unknown']; // Update with your labels
+            'Rambutan', 'Salak', 'Watermelon', 'Coconut', 'Durian', 'Unknown']; // Updated with Durian
         const maxIndex = predictions.indexOf(Math.max(...predictions));
         return labels[maxIndex];
     } catch (error) {
@@ -89,6 +89,7 @@ router.post('/classify', authenticateToken, upload.single('image'), async (req, 
     try {
         console.log('Classifying uploaded image...');
         const classificationResult = await classifyImage(tempFilePath);
+        const fruitInfo = getFruitInfo(classificationResult);
         const db = await initializeFirebase();
 
         console.log('Storing classification result in Firestore...');
@@ -98,10 +99,17 @@ router.post('/classify', authenticateToken, upload.single('image'), async (req, 
         await uploadRef.set({
             fileName: req.file.originalname,
             classification: classificationResult,
-            timestamp: admin.firestore.FieldValue.serverTimestamp()
+            timestamp: admin.firestore.FieldValue.serverTimestamp(),
+            fruitInfo
         });
 
-        res.json({ result: classificationResult, uploadId });
+        const translatedResult = {
+            hasil: classificationResult,
+            informasi_buah: fruitInfo,
+            id_upload: uploadId
+        };
+
+        res.json(translatedResult);
 
         fs.unlinkSync(tempFilePath);
     } catch (error) {

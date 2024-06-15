@@ -14,4 +14,7 @@ async function initializeFirebase() {
     return db;
 }
 
-module.exports = initializeFirebase;
+module.exports = {
+    initializeFirebase,
+    admin
+};
