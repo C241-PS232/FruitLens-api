@@ -1,20 +1,10 @@
-// firebase.js
 const admin = require('firebase-admin');
+const serviceAccount = require('./testing-424909-aea2d847cce7.json');
 
-let db;
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: 'https://(default).firebaseio.com'
+});
 
-async function initializeFirebase() {
-    if (!db) {
-        admin.initializeApp({
-            credential: admin.credential.applicationDefault(),
-            databaseURL: 'https://(default).firebaseio.com' // Ensure this URL is correct
-        });
-        db = admin.firestore();
-    }
-    return db;
-}
-
-module.exports = {
-    initializeFirebase,
-    admin
-};
+const db = admin.firestore();
+module.exports = db;
