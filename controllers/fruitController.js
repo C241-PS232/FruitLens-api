@@ -77,6 +77,25 @@ const buahManfaat = [
     },
     {
         id: 5,
+        nama: "Ceri",
+        asal: "Eropa dan Asia Barat",
+        jenis: "Prunus avium",
+        manfaat: [
+            "Mengurangi peradangan",
+            "Meningkatkan kualitas tidur",
+            "Mendukung kesehatan jantung"
+        ],
+        kandungan_gizi: [
+            "Kalori: 50",
+            "Karbohidrat: 12g",
+            "Serat: 1.6g",
+            "Vitamin C: 12% dari RDI"
+        ],
+        sumber: "https://www.healthline.com/nutrition/cherries-benefits",
+        penjelasan: "Ceri adalah buah yang berasal dari Eropa dan Asia Barat. Nama Latinnya adalah Prunus avium."
+    },
+    {
+        id: 6,
         nama: "Mentimun",
         asal: "India",
         jenis: "Cucumis sativus",
@@ -95,7 +114,7 @@ const buahManfaat = [
         penjelasan: "Mentimun adalah buah yang berasal dari India. Nama Latinnya adalah Cucumis sativus."
     },
     {
-        id: 6,
+        id: 7,
         nama: "Kurma",
         asal: "Timur Tengah dan Afrika Utara",
         jenis: "Phoenix dactylifera",
@@ -114,7 +133,7 @@ const buahManfaat = [
         penjelasan: "Kurma adalah buah yang berasal dari Timur Tengah dan Afrika Utara. Nama Latinnya adalah Phoenix dactylifera."
     },
     {
-        id: 7,
+        id: 8,
         nama: "Anggur",
         asal: "Timur Tengah",
         jenis: "Vitis vinifera",
@@ -133,7 +152,7 @@ const buahManfaat = [
         penjelasan: "Anggur adalah buah yang berasal dari Timur Tengah. Nama Latinnya adalah Vitis vinifera."
     },
     {
-        id: 8,
+        id: 9,
         nama: "Kiwi",
         asal: "Cina",
         jenis: "Actinidia deliciosa",
@@ -152,7 +171,7 @@ const buahManfaat = [
         penjelasan: "Kiwi adalah buah yang berasal dari Cina. Nama Latinnya adalah Actinidia deliciosa."
     },
     {
-        id: 9,
+        id: 10,
         nama: "Lengkeng",
         asal: "Asia Tenggara",
         jenis: "Dimocarpus longan",
@@ -171,7 +190,7 @@ const buahManfaat = [
         penjelasan: "Lengkeng adalah buah yang berasal dari Asia Tenggara. Nama Latinnya adalah Dimocarpus longan."
     },
     {
-        id: 10,
+        id: 11,
         nama: "Leci",
         asal: "Cina Selatan",
         jenis: "Litchi chinensis",
@@ -190,7 +209,7 @@ const buahManfaat = [
         penjelasan: "Leci adalah buah yang berasal dari Cina Selatan. Nama Latinnya adalah Litchi chinensis."
     },
     {
-        id: 11,
+        id: 12,
         nama: "Mangga",
         asal: "Asia Selatan",
         jenis: "Mangifera indica",
@@ -209,7 +228,7 @@ const buahManfaat = [
         penjelasan: "Mangga adalah buah yang berasal dari Asia Selatan. Nama Latinnya adalah Mangifera indica."
     },
     {
-        id: 12,
+        id: 13,
         nama: "Manggis",
         asal: "Asia Tenggara",
         jenis: "Garcinia mangostana",
@@ -228,7 +247,7 @@ const buahManfaat = [
         penjelasan: "Manggis adalah buah yang berasal dari Asia Tenggara. Nama Latinnya adalah Garcinia mangostana."
     },
     {
-        id: 13,
+        id: 14,
         nama: "Jeruk",
         asal: "Asia Tenggara",
         jenis: "Citrus sinensis",
@@ -247,7 +266,7 @@ const buahManfaat = [
         penjelasan: "Jeruk adalah buah yang berasal dari Asia Tenggara. Nama Latinnya adalah Citrus sinensis."
     },
     {
-        id: 14,
+        id: 15,
         nama: "Pepaya",
         asal: "Amerika Tengah dan Selatan",
         jenis: "Carica papaya",
@@ -266,7 +285,7 @@ const buahManfaat = [
         penjelasan: "Pepaya adalah buah yang berasal dari Amerika Tengah dan Selatan. Nama Latinnya adalah Carica papaya."
     },
     {
-        id: 15,
+        id: 16,
         nama: "Nanas",
         asal: "Amerika Selatan",
         jenis: "Ananas comosus",
@@ -285,7 +304,7 @@ const buahManfaat = [
         penjelasan: "Nanas adalah buah yang berasal dari Amerika Selatan. Nama Latinnya adalah Ananas comosus."
     },
     {
-        id: 16,
+        id: 17,
         nama: "Rambutan",
         asal: "Asia Tenggara",
         jenis: "Nephelium lappaceum",
@@ -304,7 +323,7 @@ const buahManfaat = [
         penjelasan: "Rambutan adalah buah yang berasal dari Asia Tenggara. Nama Latinnya adalah Nephelium lappaceum."
     },
     {
-        id: 17,
+        id: 18,
         nama: "Salak",
         asal: "Indonesia",
         jenis: "Salacca zalacca",
@@ -323,7 +342,7 @@ const buahManfaat = [
         penjelasan: "Salak adalah buah yang berasal dari Indonesia. Nama Latinnya adalah Salacca zalacca."
     },
     {
-        id: 18,
+        id: 19,
         nama: "Semangka",
         asal: "Afrika Barat",
         jenis: "Citrullus lanatus",
@@ -342,7 +361,7 @@ const buahManfaat = [
         penjelasan: "Semangka adalah buah yang berasal dari Afrika Barat. Nama Latinnya adalah Citrullus lanatus."
     },
     {
-        id: 19,
+        id: 20,
         nama: "Kelapa",
         asal: "Indo-Pasifik",
         jenis: "Cocos nucifera",
@@ -361,42 +380,18 @@ const buahManfaat = [
         penjelasan: "Kelapa adalah buah yang berasal dari wilayah Indo-Pasifik. Nama Latinnya adalah Cocos nucifera."
     },
     {
-        id: 20,
-        nama: "Nangka",
-        asal: "India dan Bangladesh",
-        jenis: "Artocarpus heterophyllus",
-        manfaat: [
-            "Meningkatkan kesehatan pencernaan",
-            "Mengandung antioksidan tinggi",
-            "Meningkatkan sistem kekebalan tubuh"
-        ],
-        kandungan_gizi: [
-            "Kalori: 95",
-            "Karbohidrat: 23g",
-            "Serat: 1.5g",
-            "Vitamin C: 18% dari RDI"
-        ],
-        sumber: "https://www.healthline.com/nutrition/jackfruit-benefits",
-        penjelasan: "Nangka adalah buah yang berasal dari India dan Bangladesh. Nama Latinnya adalah Artocarpus heterophyllus."
-    },
-    {
         id: 21,
-        nama: "Durian",
-        asal: "Asia Tenggara",
-        jenis: "Durio zibethinus",
+        nama: "Tidak Diketahui",
+        asal: "Tidak Diketahui",
+        jenis: "Tidak Diketahui",
         manfaat: [
-            "Meningkatkan energi",
-            "Meningkatkan kesehatan pencernaan",
-            "Mengandung antioksidan tinggi"
+            "Tidak Diketahui"
         ],
         kandungan_gizi: [
-            "Kalori: 147",
-            "Karbohidrat: 27g",
-            "Serat: 3.8g",
-            "Vitamin C: 33% dari RDI"
+            "Tidak Diketahui"
         ],
-        sumber: "https://www.healthline.com/nutrition/durian-fruit",
-        penjelasan: "Durian adalah buah yang berasal dari Asia Tenggara. Nama Latinnya adalah Durio zibethinus."
+        sumber: "Tidak Diketahui",
+        penjelasan: "Tidak Diketahui"
     }
 ];
 

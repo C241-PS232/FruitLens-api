@@ -1,0 +1,9 @@
+.git
+.vscode
+.gitignore
+Makefile
+node_modules
+npm-debug.log
+build
+*.md
+tmp
