@@ -1,4 +1,3 @@
-
 # FruitLens
 “FruitLens” is an innovative mobile application designed to enhance the educational experience by providing users with a comprehensive platform for identifying and learning about fruits. Users can take pictures of fruits, and the system uses advanced image recognition technology to identify them. This application also provides detailed information about each fruit, thereby increasing users' understanding of fruits more deeply. By combining education and technology, this application makes it easier to recognize fruits and fosters curiosity and knowledge in users of all ages.
 
@@ -9,41 +8,55 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 What things you need to install the software and how to install them:
-Install and configure the Google Cloud SDK:
-- Download and install the Google Cloud SDK from [here](https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe).
-- Initialize the SDK and authenticate with your Google account:
-```bash
-gcloud init
-```
-- Set your Google Cloud project:
-```bash
-gcloud config set project your-project-id
-```
+
+1. Install and configure the Google Cloud SDK:
+    - Download and install the Google Cloud SDK from [here](https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe).
+    - Initialize the SDK and authenticate with your Google account:
+    ```bash
+    gcloud init
+    ```
+    - Set your Google Cloud project:
+    ```bash
+    gcloud config set project your-project-id
+    ```
+    (Assuming you have created a Google Cloud project with Firestore and storage bucket set up.)
+
+2. Install the necessary Node.js packages:
+    ```bash
+    npm install express
+    npm install multer
+    npm install @google-cloud/storage
+    npm install @tensorflow/tfjs-node
+    npm install firebase-admin
+    npm install uuid
+    npm install bcrypt
+    npm install jsonwebtoken
+    ```
 
 ### Installing and Running
 
 1. Clone this repository.
-```bash
-git clone https://github.com/C241-PS232/fruitlens-api.git
-```
+    ```bash
+    git clone https://github.com/C241-PS232/fruitlens-api.git
+    ```
 2. Navigate to the project directory.
-```bash
-cd fruitlens-api
-```
+    ```bash
+    cd fruitlens-api
+    ```
 3. Install the required dependencies.
-```bash
-npm install
-```
-4. Set up your Firebase project.
+    ```bash
+    npm install
+    ```
+4. Set up your Firebase url and Place it in the `firebase/firebase.js` directory of your project.
 5. Create a `.env` file in the root directory and add your environment variables:
-```
-JWT_SECRET=your_jwt_secret
-```
+    ```
+    JWT_SECRET=your_jwt_secret
+    ```
 6. Start the application.
-```bash
-npm start
-```
-7. Access the application at `http://localhost:8080`.
+    ```bash
+    npm start
+    ```
+7. Access the API at `http://localhost:8080`.
 
 ## Team Information
 - **Team Members:**
