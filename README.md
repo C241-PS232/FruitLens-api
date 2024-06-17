@@ -9,17 +9,6 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 What things you need to install the software and how to install them:
-```bash
-npm install express
-npm install multer
-npm install @google-cloud/storage
-npm install @tensorflow/tfjs-node
-npm install firebase-admin
-npm install uuid
-npm install bcrypt
-npm install jsonwebtoken
-```
-
 Install and configure the Google Cloud SDK:
 - Download and install the Google Cloud SDK from [here](https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe).
 - Initialize the SDK and authenticate with your Google account:
