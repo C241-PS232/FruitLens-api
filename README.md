@@ -70,32 +70,6 @@ What things you need to install the software and how to install them:
   - **MD**: Muhammad Arafie Setiawan - Mobile Development - [Arafie2603](https://github.com/Arafie2603)
   - **MD**: Dimas Nyondro Radityo - Mobile Development - [Nyondro](https://github.com/Nyondro)
 
-## Tools, IDE, Library, and Resources
-
-### Tools
-- **Git:** Distributed version control system.
-- **Postman:** Tool for testing and interacting with APIs.
-
-### IDE
-- **Visual Studio Code:** Source code editor supporting JavaScript and Python.
-- **Android Studio:** Official IDE for Android application development.
-
-### Library
-- **TensorFlow:** Library for numerical computation and machine learning.
-- **Matplotlib:** Library for creating visualizations in Python.
-- **Scikit-Learn:** Machine learning library for Python.
-- **Node.js:** Back-end JavaScript runtime environment.
-- **Express:** Web application framework for Node.js.
-- **JWT & OAuth:** Technologies for securing communications.
-- **CameraX:** Library for easing camera app development.
-- **DataStore:** Data storage solution.
-- **Room:** Persistence library for SQLite.
-- **SQLite:** Relational database management system.
-- **Retrofit:** Type-safe REST client for Android and Java.
-
-### Resources
-- **Google Cloud Platform:** Suite of cloud computing services.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
