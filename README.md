@@ -26,18 +26,6 @@ What things you need to install the software and how to install them:
     gcloud config set project your-project-id
     ```
 
-2. Install the necessary Node.js packages:
-    ```bash
-    npm install express
-    npm install multer
-    npm install @google-cloud/storage
-    npm install @tensorflow/tfjs-node
-    npm install firebase-admin
-    npm install uuid
-    npm install bcrypt
-    npm install jsonwebtoken
-    ```
-
 ### Installing and Running
 
 1. Clone this repository.
