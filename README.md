@@ -30,10 +30,6 @@ gcloud init
 ```bash
 gcloud config set project your-project-id
 ```
-7. Start the application.
-```bash
-npm start
-```
 
 ### Installing and Running
 
@@ -54,7 +50,11 @@ npm install
 ```
 JWT_SECRET=your_jwt_secret
 ```
-6. Access the application at `http://localhost:8080`.
+6. Start the application.
+```bash
+npm start
+```
+7. Access the application at `http://localhost:8080`.
 
 ## Team Information
 - **Team Members:**
