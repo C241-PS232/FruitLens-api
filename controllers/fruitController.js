@@ -13,7 +13,7 @@ const buahManfaat = [
             "Kalori: 52",
             "Karbohidrat: 14g",
             "Serat: 2.4g",
-            "Vitamin C: 14% dari RDI"
+            "Vitamin C: 14% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/10-health-benefits-of-apples",
         penjelasan: "Apel adalah buah yang berasal dari Asia Tengah. Buah ini dikenal dengan nama Latin Malus domestica."
@@ -32,7 +32,7 @@ const buahManfaat = [
             "Kalori: 160",
             "Lemak: 15g",
             "Serat: 7g",
-            "Vitamin K: 26% dari RDI"
+            "Vitamin K: 26% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/12-proven-benefits-of-avocado",
         penjelasan: "Alpukat adalah buah yang berasal dari Amerika Tengah dan Meksiko. Nama Latin buah ini adalah Persea americana."
@@ -51,7 +51,7 @@ const buahManfaat = [
             "Kalori: 89",
             "Karbohidrat: 23g",
             "Serat: 2.6g",
-            "Vitamin B6: 20% dari RDI"
+            "Vitamin B6: 20% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/11-proven-benefits-of-bananas",
         penjelasan: "Pisang adalah buah yang berasal dari Asia Tenggara. Nama Latinnya adalah Musa acuminata."
@@ -70,7 +70,7 @@ const buahManfaat = [
             "Kalori: 57",
             "Karbohidrat: 14g",
             "Serat: 2.4g",
-            "Vitamin C: 16% dari RDI"
+            "Vitamin C: 16% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/10-proven-benefits-of-blueberries",
         penjelasan: "Blueberry adalah buah yang berasal dari Amerika Utara. Nama Latinnya adalah Vaccinium corymbosum."
@@ -89,7 +89,7 @@ const buahManfaat = [
             "Kalori: 50",
             "Karbohidrat: 12g",
             "Serat: 1.6g",
-            "Vitamin C: 12% dari RDI"
+            "Vitamin C: 12% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/cherries-benefits",
         penjelasan: "Ceri adalah buah yang berasal dari Eropa dan Asia Barat. Nama Latinnya adalah Prunus avium."
@@ -108,7 +108,7 @@ const buahManfaat = [
             "Kalori: 15",
             "Karbohidrat: 3.6g",
             "Serat: 0.5g",
-            "Vitamin K: 16% dari RDI"
+            "Vitamin K: 16% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/7-health-benefits-of-cucumber",
         penjelasan: "Mentimun adalah buah yang berasal dari India. Nama Latinnya adalah Cucumis sativus."
@@ -127,7 +127,7 @@ const buahManfaat = [
             "Kalori: 282",
             "Karbohidrat: 75g",
             "Serat: 8g",
-            "Kalium: 20% dari RDI"
+            "Kalium: 20% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/benefits-of-dates",
         penjelasan: "Kurma adalah buah yang berasal dari Timur Tengah dan Afrika Utara. Nama Latinnya adalah Phoenix dactylifera."
@@ -146,7 +146,7 @@ const buahManfaat = [
             "Kalori: 69",
             "Karbohidrat: 18g",
             "Serat: 0.9g",
-            "Vitamin C: 18% dari RDI"
+            "Vitamin C: 18% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/benefits-of-grapes",
         penjelasan: "Anggur adalah buah yang berasal dari Timur Tengah. Nama Latinnya adalah Vitis vinifera."
@@ -165,7 +165,7 @@ const buahManfaat = [
             "Kalori: 61",
             "Karbohidrat: 15g",
             "Serat: 3g",
-            "Vitamin C: 154% dari RDI"
+            "Vitamin C: 154% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/kiwi-benefits",
         penjelasan: "Kiwi adalah buah yang berasal dari Cina. Nama Latinnya adalah Actinidia deliciosa."
@@ -184,7 +184,7 @@ const buahManfaat = [
             "Kalori: 60",
             "Karbohidrat: 15g",
             "Serat: 1.1g",
-            "Vitamin C: 140% dari RDI"
+            "Vitamin C: 140% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.organicfacts.net/health-benefits/fruit/longan.html",
         penjelasan: "Lengkeng adalah buah yang berasal dari Asia Tenggara. Nama Latinnya adalah Dimocarpus longan."
@@ -203,7 +203,7 @@ const buahManfaat = [
             "Kalori: 66",
             "Karbohidrat: 17g",
             "Serat: 1.3g",
-            "Vitamin C: 119% dari RDI"
+            "Vitamin C: 119% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/lychee-benefits",
         penjelasan: "Leci adalah buah yang berasal dari Cina Selatan. Nama Latinnya adalah Litchi chinensis."
@@ -222,7 +222,7 @@ const buahManfaat = [
             "Kalori: 60",
             "Karbohidrat: 15g",
             "Serat: 1.6g",
-            "Vitamin C: 67% dari RDI"
+            "Vitamin C: 67% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/mango",
         penjelasan: "Mangga adalah buah yang berasal dari Asia Selatan. Nama Latinnya adalah Mangifera indica."
@@ -241,7 +241,7 @@ const buahManfaat = [
             "Kalori: 73",
             "Karbohidrat: 18g",
             "Serat: 1.8g",
-            "Vitamin C: 12% dari RDI"
+            "Vitamin C: 12% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/mangosteen",
         penjelasan: "Manggis adalah buah yang berasal dari Asia Tenggara. Nama Latinnya adalah Garcinia mangostana."
@@ -260,7 +260,7 @@ const buahManfaat = [
             "Kalori: 47",
             "Karbohidrat: 12g",
             "Serat: 2.4g",
-            "Vitamin C: 88% dari RDI"
+            "Vitamin C: 88% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/foods/oranges",
         penjelasan: "Jeruk adalah buah yang berasal dari Asia Tenggara. Nama Latinnya adalah Citrus sinensis."
@@ -279,7 +279,7 @@ const buahManfaat = [
             "Kalori: 43",
             "Karbohidrat: 11g",
             "Serat: 1.7g",
-            "Vitamin C: 75% dari RDI"
+            "Vitamin C: 75% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/8-proven-papaya-benefits",
         penjelasan: "Pepaya adalah buah yang berasal dari Amerika Tengah dan Selatan. Nama Latinnya adalah Carica papaya."
@@ -298,7 +298,7 @@ const buahManfaat = [
             "Kalori: 50",
             "Karbohidrat: 13g",
             "Serat: 1.4g",
-            "Vitamin C: 79% dari RDI"
+            "Vitamin C: 79% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/pineapple-benefits",
         penjelasan: "Nanas adalah buah yang berasal dari Amerika Selatan. Nama Latinnya adalah Ananas comosus."
@@ -317,7 +317,7 @@ const buahManfaat = [
             "Kalori: 68",
             "Karbohidrat: 16g",
             "Serat: 0.9g",
-            "Vitamin C: 40% dari RDI"
+            "Vitamin C: 40% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/rambutan-fruit",
         penjelasan: "Rambutan adalah buah yang berasal dari Asia Tenggara. Nama Latinnya adalah Nephelium lappaceum."
@@ -336,7 +336,7 @@ const buahManfaat = [
             "Kalori: 82",
             "Karbohidrat: 22g",
             "Serat: 2.6g",
-            "Vitamin C: 15% dari RDI"
+            "Vitamin C: 15% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/snake-fruit",
         penjelasan: "Salak adalah buah yang berasal dari Indonesia. Nama Latinnya adalah Salacca zalacca."
@@ -355,7 +355,7 @@ const buahManfaat = [
             "Kalori: 30",
             "Karbohidrat: 8g",
             "Serat: 0.4g",
-            "Vitamin C: 10% dari RDI"
+            "Vitamin C: 10% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/watermelon-benefits",
         penjelasan: "Semangka adalah buah yang berasal dari Afrika Barat. Nama Latinnya adalah Citrullus lanatus."
@@ -374,7 +374,7 @@ const buahManfaat = [
             "Kalori: 354",
             "Lemak: 33g",
             "Serat: 9g",
-            "Zat Besi: 13% dari RDI"
+            "Zat Besi: 13% berdasarkan Recommended Daily Intake (RDI)"
         ],
         sumber: "https://www.healthline.com/nutrition/coconut-nutrition",
         penjelasan: "Kelapa adalah buah yang berasal dari wilayah Indo-Pasifik. Nama Latinnya adalah Cocos nucifera."
