@@ -11,9 +11,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them:
 
-(Assuming you have created a Google Cloud project with Firestore and storage bucket set up.)
+Install and configure the Google Cloud SDK: (Assuming you have created a Google Cloud project with Firestore and storage bucket set up.)
 
-1. Install and configure the Google Cloud SDK:
    Download and install the Google Cloud SDK from [here](https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe).
    
    Initialize the SDK and authenticate with your Google account:
