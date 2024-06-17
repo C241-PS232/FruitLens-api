@@ -1,4 +1,8 @@
-// routes/userRoutes.js
+/**
+ * This file handles routing for user operations.
+ * Uses Express to set up routes and connects them to the user controller.
+ */
+
 const express = require('express');
 const userController = require('../controllers/userController');
 const authenticateToken = require('../middlewares/authMiddleware');
@@ -9,16 +13,22 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 
-// Route to get all users (protected)
-router.get('/', authenticateToken, userController.getAllUsers);
-
-// Route to create a new user (public)
+/**
+ * Route to create a new user (public).
+ * Does not require token authentication.
+ */
 router.post('/', userController.createUser);
 
-// Route to login a user (public)
+/**
+ * Route for user login (public).
+ * Does not require token authentication.
+ */
 router.post('/login', userController.loginUser);
 
-// Route to logout a user (protected)
+/**
+ * Route for user logout (protected).
+ * Requires token authentication to access.
+ */
 router.post('/logout', authenticateToken, userController.logoutUser);
 
 module.exports = router;

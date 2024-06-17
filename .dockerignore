@@ -1,9 +1,28 @@
+# Ignore the following files and directories when building the Docker image
+
+# Git related files
 .git
+
+# Visual Studio Code directory
 .vscode
+
+# Git ignore file
 .gitignore
+
+# Makefile
 Makefile
+
+# Node modules directory
 node_modules
+
+# NPM debug log file
 npm-debug.log
+
+# Build directory
 build
+
+# Markdown files
 *.md
+
+# Temporary files directory
 tmp

@@ -395,6 +395,11 @@ const buahManfaat = [
     }
 ];
 
+/**
+ * Function to get fruit information based on the fruit name.
+ * @param {string} fruitName - The name of the fruit to search for information.
+ * @returns {object} - An object containing information about the fruit.
+ */
 const getFruitInfo = (fruitName) => {
     return buahManfaat.find(buah => buah.nama.toLowerCase() === fruitName.toLowerCase());
 };

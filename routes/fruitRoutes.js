@@ -14,14 +14,21 @@ const storage = new Storage();
 const bucketName = 'fruitlens-testing';
 const modelPath = 'models/model.json';
 const weightsPath = 'models/weights.bin';
+const metadataPath = 'models/metadata.json';
 
 let model;
+let labels = [];
 
+/**
+ * Function to download and load the model and metadata from Google Cloud Storage (GCS).
+ * The model will be stored in a temporary directory and loaded into the application.
+ */
 const loadModelFromGCS = async () => {
     try {
         const modelDir = path.join(__dirname, '..', 'tmp', 'models');
         const modelFilePath = path.join(modelDir, 'model.json');
         const weightsFilePath = path.join(modelDir, 'weights.bin');
+        const metadataFilePath = path.join(modelDir, 'metadata.json');
 
         // Ensure the model directory exists
         if (!fs.existsSync(modelDir)) {
@@ -31,10 +38,16 @@ const loadModelFromGCS = async () => {
         console.log('Downloading model files from GCS...');
         await storage.bucket(bucketName).file(modelPath).download({ destination: modelFilePath });
         await storage.bucket(bucketName).file(weightsPath).download({ destination: weightsFilePath });
+        await storage.bucket(bucketName).file(metadataPath).download({ destination: metadataFilePath });
 
         console.log('Loading model...');
         model = await tf.loadLayersModel(`file://${modelFilePath}`);
-        console.log('Model loaded successfully from GCS');
+        console.log('Model successfully loaded from GCS');
+
+        console.log('Loading metadata...');
+        const metadata = JSON.parse(fs.readFileSync(metadataFilePath, 'utf8'));
+        labels = metadata.labels;
+        console.log('Metadata successfully loaded');
     } catch (error) {
         console.error('Error loading model from GCS:', error);
     }
@@ -46,6 +59,11 @@ loadModelFromGCS().catch(console.error);
 // Multer setup to store files temporarily in memory
 const upload = multer({ storage: multer.memoryStorage() });
 
+/**
+ * Function to classify an uploaded image.
+ * @param {string} filePath - Path of the image file to be classified.
+ * @returns {string} - Label of the classification result.
+ */
 const classifyImage = async (filePath) => {
     if (!model) {
         throw new Error('Model not loaded');
@@ -55,7 +73,7 @@ const classifyImage = async (filePath) => {
         const imageBuffer = fs.readFileSync(filePath);
         const imageTensor = tf.node.decodeImage(imageBuffer);
 
-        // Convert the image to 3 channels if it has 4 channels
+        // Convert image to 3 channels if it has 4 channels
         let rgbImageTensor;
         if (imageTensor.shape[2] === 4) {
             rgbImageTensor = imageTensor.slice([0, 0, 0], [-1, -1, 3]);  // Slice out the first 3 channels (R, G, B)
@@ -68,9 +86,6 @@ const classifyImage = async (filePath) => {
 
         console.log('Classifying image...');
         const predictions = await model.predict(normalizedImage).data();
-        const labels = ['Apel', 'Alpukat', 'Pisang', 'Blueberry', 'Ceri', 'Mentimun', 'Kurma', 'Anggur', 
-                'Kiwi', 'Lengkeng', 'Leci', 'Mangga', 'Manggis', 'Jeruk', 'Pepaya', 'Nanas', 
-                'Rambutan', 'Salak', 'Semangka', 'Kelapa', 'Tidak Diketahui']; // Changed to Indonesian
         const maxIndex = predictions.indexOf(Math.max(...predictions));
         return labels[maxIndex];
     } catch (error) {
