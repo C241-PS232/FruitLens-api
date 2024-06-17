@@ -13,13 +13,12 @@ What things you need to install the software and how to install them:
 
 Install and configure the Google Cloud SDK: (Assuming you have created a Google Cloud project with Firestore and storage bucket set up)
 
-- Download and install the Google Cloud SDK from [here](https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe).
+1. Download and install the Google Cloud SDK from [here](https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe).
 
-- Initialize the SDK and authenticate with your Google account:
+2. Initialize the SDK and authenticate with your Google account:
     ```bash
     gcloud init
     ```
-    
 - Set your Google Cloud project:
     ```bash
     gcloud config set project your-project-id
@@ -27,28 +26,28 @@ Install and configure the Google Cloud SDK: (Assuming you have created a Google 
 
 ### Installing and Running
 
-- Clone this repository.
+1. Clone this repository.
     ```bash
     git clone https://github.com/C241-PS232/fruitlens-api.git
     ```
-- Navigate to the project directory.
+2. Navigate to the project directory.
     ```bash
     cd fruitlens-api
     ```
-- Install the required dependencies.
+3. Install the required dependencies.
     ```bash
     npm install
     ```
-- Set up your Firebase url and Place it in the `firebase/firebase.js` directory of your project.
-- Create a `.env` file in the root directory and add your environment variables:
+4. Set up your Firebase url and Place it in the `firebase/firebase.js` directory of your project.
+5. Create a `.env` file in the root directory and add your environment variables:
     ```
     JWT_SECRET=your_jwt_secret
     ```
-- Start the application.
+6. Start the application.
     ```bash
     npm start
     ```
-- Access the API at `http://localhost:8080`.
+7. Access the API at `http://localhost:8080`.
 
 ## Team Information
 - **Team Members:**
