@@ -1,20 +1,13 @@
-// controllers/userController.js
 const { initializeFirebase, admin } = require('../firebase/firebase');
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-exports.getAllUsers = async (req, res) => {
-    try {
-        const db = await initializeFirebase();
-        const snapshot = await db.collection('users').get();
-        const users = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        res.status(200).json(users);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
+/**
+ * Create a new user and save it to the 'users' collection in Firestore.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 exports.createUser = async (req, res) => {
     try {
         const db = await initializeFirebase();
@@ -28,27 +21,31 @@ exports.createUser = async (req, res) => {
     }
 };
 
+/**
+ * Authenticate a user based on email and password.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 exports.loginUser = async (req, res) => {
     try {
         const db = await initializeFirebase();
         const { email, password } = req.body;
         const snapshot = await db.collection('users').where('email', '==', email).get();
         if (snapshot.empty) {
-            return res.status(400).json({ email, logged: false, message: 'Invalid email or password' });
+            return res.status(400).json({ email, logged: false, message: 'Email atau kata sandi tidak valid' });
         }
         const userDoc = snapshot.docs[0];
         const user = userDoc.data();
         const validPassword = await bcrypt.compare(password, user.password);
         if (!validPassword) {
-            return res.status(400).json({ email, logged: false, message: 'Invalid email or password' });
+            return res.status(400).json({ email, logged: false, message: 'Email atau kata sandi tidak valid' });
         }
-        const token = jwt.sign({ id: userDoc.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: userDoc.id, email: user.email }, process.env.JWT_SECRET);
 
-        // Store the token in Firestore
+        // Save the token in Firestore
         await db.collection('tokens').doc(token).set({
             valid: true,
-            userId: userDoc.id,
-            expiresAt: admin.firestore.Timestamp.fromDate(new Date(Date.now() + 3600 * 1000))
+            userId: userDoc.id
         });
 
         res.status(200).json({ email: user.email, logged: true, token });
@@ -57,6 +54,11 @@ exports.loginUser = async (req, res) => {
     }
 };
 
+/**
+ * Logout a user by deleting the token from Firestore.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 exports.logoutUser = async (req, res) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
@@ -65,8 +67,8 @@ exports.logoutUser = async (req, res) => {
 
     try {
         const db = await initializeFirebase();
-        await db.collection('tokens').doc(token).delete(); // Remove token from Firestore
-        res.status(200).json({ message: 'User logged out' });
+        await db.collection('tokens').doc(token).delete(); // Delete the token from Firestore
+        res.status(200).json({ message: 'Pengguna berhasil logout' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
