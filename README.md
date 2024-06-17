@@ -19,6 +19,7 @@ Install and configure the Google Cloud SDK: (Assuming you have created a Google 
     ```bash
     gcloud init
     ```
+    
 - Set your Google Cloud project:
     ```bash
     gcloud config set project your-project-id
@@ -30,23 +31,29 @@ Install and configure the Google Cloud SDK: (Assuming you have created a Google 
     ```bash
     git clone https://github.com/C241-PS232/fruitlens-api.git
     ```
+    
 2. Navigate to the project directory.
     ```bash
     cd fruitlens-api
     ```
+    
 3. Install the required dependencies.
     ```bash
     npm install
     ```
+    
 4. Set up your Firebase url and Place it in the `firebase/firebase.js` directory of your project.
+   
 5. Create a `.env` file in the root directory and add your environment variables:
     ```
     JWT_SECRET=your_jwt_secret
     ```
+    
 6. Start the application.
     ```bash
     npm start
     ```
+    
 7. Access the API at `http://localhost:8080`.
 
 ## Team Information
