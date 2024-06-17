@@ -58,13 +58,13 @@ Install and configure the Google Cloud SDK: (Assuming you have created a Google 
 
 ## Team Information
 - **Team Members:**
-  - **ML**: Indira Elza Yunita - Machine Learning Development - [caloemhood](https://github.com/caloemhood)
-  - **ML**: Jauza Zahraza - Machine Learning Development - [jzahraza](https://github.com/jzahraza)
-  - **ML**: Irnada Al Anati - Machine Learning Development - [irnadaaa](https://github.com/irnadaaa)
-  - **CC**: Abiyyu Dhiyaul Haq - Cloud Computing - [Enotherms](https://github.com/Enotherms)
-  - **CC**: Kelvin Pahotton Simamora - Cloud Computing - [kelvin77777](https://github.com/kelvin77777)
-  - **MD**: Muhammad Arafie Setiawan - Mobile Development - [Arafie2603](https://github.com/Arafie2603)
-  - **MD**: Dimas Nyondro Radityo - Mobile Development - [Nyondro](https://github.com/Nyondro)
+  - Abiyyu Dhiyaul Haq - Cloud Computing - [Enotherms](https://github.com/Enotherms)
+  - Kelvin Pahotton Simamora - Cloud Computing - [kelvin77777](https://github.com/kelvin77777)
+  - Muhammad Arafie Setiawan - Mobile Development - [Arafie2603](https://github.com/Arafie2603)
+  - Dimas Nyondro Radityo - Mobile Development - [Nyondro](https://github.com/Nyondro)
+  - Indira Elza Yunita - Machine Learning Development - [caloemhood](https://github.com/caloemhood)
+  - Jauza Zahraza - Machine Learning Development - [jzahraza](https://github.com/jzahraza)
+  - Irnada Al Anati - Machine Learning Development - [irnadaaa](https://github.com/irnadaaa)
 
 ## License
 
