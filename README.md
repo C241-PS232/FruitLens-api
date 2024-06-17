@@ -97,3 +97,13 @@ What things you need to install the software and how to install them:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
+
+## Acknowledgments
+
+We would like to express our gratitude to the following:
+- The Bangkit 2024 Batch 1 program, for providing us the opportunity and platform to develop this project. This experience has been instrumental in our growth and learning.
+- Our mentors and instructors, for their invaluable guidance and expertise. Your dedication and encouragement have inspired us to push our boundaries.
+- Google Cloud Platform teams, for developing and maintaining these powerful tools that have been critical in the creation of FruitLens.
+- Our users and the open-source community, for their support and contributions. Your feedback and involvement have been vital in improving FruitLens.
+- Lastly, we would like to acknowledge all those who have indirectly contributed to this project. Your work has made a difference.
+Thank you for your support and belief in Scancare. We look forward to continuing our journey in enhancing FruitLens through technology.
