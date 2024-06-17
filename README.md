@@ -20,6 +20,21 @@ npm install bcrypt
 npm install jsonwebtoken
 ```
 
+Install and configure the Google Cloud SDK:
+- Download and install the Google Cloud SDK from [here](https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe).
+- Initialize the SDK and authenticate with your Google account:
+```bash
+gcloud init
+```
+- Set your Google Cloud project:
+```bash
+gcloud config set project your-project-id
+```
+7. Start the application.
+```bash
+npm start
+```
+
 ### Installing and Running
 
 1. Clone this repository.
@@ -34,26 +49,12 @@ cd fruitlens-api
 ```bash
 npm install
 ```
-4. Set up your Firebase project and download the `serviceAccountKey.json` file. Place it in the `firebase` directory of your project.
+4. Set up your Firebase project.
 5. Create a `.env` file in the root directory and add your environment variables:
 ```
 JWT_SECRET=your_jwt_secret
 ```
-6. Install and configure the Google Cloud SDK:
-- Download and install the Google Cloud SDK from [here](https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe).
-- Initialize the SDK and authenticate with your Google account:
-```bash
-gcloud init
-```
-- Set your Google Cloud project:
-```bash
-gcloud config set project your-project-id
-```
-7. Start the application.
-```bash
-npm start
-```
-8. Access the application at `http://localhost:8080`.
+6. Access the application at `http://localhost:8080`.
 
 ## Team Information
 - **Team Members:**
