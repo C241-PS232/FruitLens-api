@@ -57,14 +57,13 @@ Install and configure the Google Cloud SDK: (Assuming you have created a Google 
 7. Access the API at `http://localhost:8080`.
 
 ## Team Information
-- **Team Members:**
-  - Abiyyu Dhiyaul Haq - Cloud Computing - [Enotherms](https://github.com/Enotherms)
-  - Kelvin Pahotton Simamora - Cloud Computing - [kelvin77777](https://github.com/kelvin77777)
-  - Muhammad Arafie Setiawan - Mobile Development - [Arafie2603](https://github.com/Arafie2603)
-  - Dimas Nyondro Radityo - Mobile Development - [Nyondro](https://github.com/Nyondro)
-  - Indira Elza Yunita - Machine Learning Development - [caloemhood](https://github.com/caloemhood)
-  - Jauza Zahraza - Machine Learning Development - [jzahraza](https://github.com/jzahraza)
-  - Irnada Al Anati - Machine Learning Development - [irnadaaa](https://github.com/irnadaaa)
+- Abiyyu Dhiyaul Haq - Cloud Computing - [Enotherms](https://github.com/Enotherms)
+- Kelvin Pahotton Simamora - Cloud Computing - [kelvin77777](https://github.com/kelvin77777)
+- Muhammad Arafie Setiawan - Mobile Development - [Arafie2603](https://github.com/Arafie2603)
+- Dimas Nyondro Radityo - Mobile Development - [Nyondro](https://github.com/Nyondro)
+- Indira Elza Yunita - Machine Learning Development - [caloemhood](https://github.com/caloemhood)
+- Jauza Zahraza - Machine Learning Development - [jzahraza](https://github.com/jzahraza)
+- Irnada Al Anati - Machine Learning Development - [irnadaaa](https://github.com/irnadaaa)
 
 ## License
 
