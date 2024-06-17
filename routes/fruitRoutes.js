@@ -19,13 +19,13 @@ let model;
 
 const loadModelFromGCS = async () => {
     try {
-        const modelDir = path.join('/tmp', 'models');
+        const modelDir = path.join(__dirname, '..', 'tmp', 'models');
         const modelFilePath = path.join(modelDir, 'model.json');
         const weightsFilePath = path.join(modelDir, 'weights.bin');
 
         // Ensure the model directory exists
         if (!fs.existsSync(modelDir)) {
-            fs.mkdirSync(modelDir);
+            fs.mkdirSync(modelDir, { recursive: true });
         }
 
         console.log('Downloading model files from GCS...');
@@ -54,14 +54,23 @@ const classifyImage = async (filePath) => {
     try {
         const imageBuffer = fs.readFileSync(filePath);
         const imageTensor = tf.node.decodeImage(imageBuffer);
-        const resizedImage = tf.image.resizeBilinear(imageTensor, [224, 224]);
+
+        // Convert the image to 3 channels if it has 4 channels
+        let rgbImageTensor;
+        if (imageTensor.shape[2] === 4) {
+            rgbImageTensor = imageTensor.slice([0, 0, 0], [-1, -1, 3]);  // Slice out the first 3 channels (R, G, B)
+        } else {
+            rgbImageTensor = imageTensor;
+        }
+
+        const resizedImage = tf.image.resizeBilinear(rgbImageTensor, [224, 224]);
         const normalizedImage = resizedImage.div(255.0).expandDims(0);
 
         console.log('Classifying image...');
         const predictions = await model.predict(normalizedImage).data();
-        const labels = ['Apple', 'Avocado', 'Banana', 'Blueberry', 'Cherry', 'Cucumber', 'Date', 'Grape',
-            'Kiwi', 'Longan', 'Lychee', 'Mango', 'Mangosteen', 'Orange', 'Papaya', 'Pineapple',
-            'Rambutan', 'Salak', 'Watermelon', 'Coconut', 'Durian', 'Unknown']; // Updated with Durian
+        const labels = ['Apel', 'Alpukat', 'Pisang', 'Blueberry', 'Ceri', 'Mentimun', 'Kurma', 'Anggur', 
+                'Kiwi', 'Lengkeng', 'Leci', 'Mangga', 'Manggis', 'Jeruk', 'Pepaya', 'Nanas', 
+                'Rambutan', 'Salak', 'Semangka', 'Kelapa', 'Tidak Diketahui']; // Changed to Indonesian
         const maxIndex = predictions.indexOf(Math.max(...predictions));
         return labels[maxIndex];
     } catch (error) {
@@ -83,13 +92,14 @@ router.post('/classify', authenticateToken, upload.single('image'), async (req, 
         return res.status(400).send('No file uploaded');
     }
 
-    const tempFilePath = path.join('/tmp', `${uuidv4()}_${req.file.originalname}`);
+    const tempFilePath = path.join(__dirname, '..', 'tmp', `${uuidv4()}_${req.file.originalname}`);
     fs.writeFileSync(tempFilePath, req.file.buffer);
 
     try {
         console.log('Classifying uploaded image...');
         const classificationResult = await classifyImage(tempFilePath);
-        const fruitInfo = getFruitInfo(classificationResult);
+        const fruitInfo = getFruitInfo(classificationResult) || {};
+
         const db = await initializeFirebase();
 
         console.log('Storing classification result in Firestore...');
@@ -100,16 +110,12 @@ router.post('/classify', authenticateToken, upload.single('image'), async (req, 
             fileName: req.file.originalname,
             classification: classificationResult,
             timestamp: admin.firestore.FieldValue.serverTimestamp(),
-            fruitInfo
+            fruitInfo: {
+                ...fruitInfo
+            }
         });
 
-        const translatedResult = {
-            hasil: classificationResult,
-            informasi_buah: fruitInfo,
-            id_upload: uploadId
-        };
-
-        res.json(translatedResult);
+        res.json({ result: classificationResult, fruitInfo, uploadId });
 
         fs.unlinkSync(tempFilePath);
     } catch (error) {
