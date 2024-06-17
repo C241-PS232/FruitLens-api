@@ -12,22 +12,21 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them:
 
 1. Install and configure the Google Cloud SDK:
-    - Download and install the Google Cloud SDK from [here](https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe).
-    - Initialize the SDK and authenticate with your Google account:
+   Download and install the Google Cloud SDK from [here](https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe).
    
+   Initialize the SDK and authenticate with your Google account:
     ```bash
     gcloud init
     ```
-   
-    - Set your Google Cloud project:
-   
+    
+   Set your Google Cloud project:
     ```bash
     gcloud config set project your-project-id
     ```
    
     (Assuming you have created a Google Cloud project with Firestore and storage bucket set up.)
 
-2. Install the necessary Node.js packages:
+3. Install the necessary Node.js packages:
     ```bash
     npm install express
     npm install multer
