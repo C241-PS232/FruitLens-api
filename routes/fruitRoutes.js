@@ -11,7 +11,7 @@ const { getFruitInfo } = require('../controllers/fruitController');
 
 const router = express.Router();
 const storage = new Storage();
-const bucketName = 'fruitlens-testing';
+const bucketName = 'fruitlens';
 const modelPath = 'models/model.json';
 const weightsPath = 'models/weights.bin';
 const metadataPath = 'models/metadata.json';

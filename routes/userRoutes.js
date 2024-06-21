@@ -17,7 +17,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
  * Route to create a new user (public).
  * Does not require token authentication.
  */
-router.post('/', userController.createUser);
+router.post('/register', userController.createUser);
 
 /**
  * Route for user login (public).

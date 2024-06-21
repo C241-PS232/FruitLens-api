@@ -11,8 +11,16 @@ const jwt = require('jsonwebtoken');
 exports.createUser = async (req, res) => {
     try {
         const db = await initializeFirebase();
+        const { email, password } = req.body;
+
+        // Check if email already exists
+        const snapshot = await db.collection('users').where('email', '==', email).get();
+        if (!snapshot.empty) {
+            return res.status(400).json({ message: 'Email sudah terdaftar' });
+        }
+
         const id = uuidv4();
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
         const user = { ...req.body, password: hashedPassword };
         await db.collection('users').doc(id).set(user);
         res.status(201).json({ id, ...user });
